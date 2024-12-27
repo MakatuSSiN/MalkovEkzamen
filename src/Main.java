@@ -1,15 +1,66 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.ArrayList;
+import java.util.List;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+//разработать класс для хранения данных об автомобилях, находящихся в таксопарке. Использую созданный класс, смоделировать работу приложения.
+public class Main {
+    public class Car {
+        private String licensePlate;
+        private String model;
+        private int year;
+
+        public Car(String licensePlate, String model, int year) {
+            this.licensePlate = licensePlate;
+            this.model = model;
+            this.year = year;
         }
+
+        @Override
+        public String toString() {
+            return year + " " + model + " (License Plate: " + licensePlate + ")";
+        }
+
+        public String getLicensePlate() {
+            return licensePlate;
+        }
+    }
+
+    public class TaxiFleet {
+        private List<Car> cars;
+
+        public TaxiFleet() {
+            cars = new ArrayList<>();
+        }
+
+        public void addCar(Car car) {
+            cars.add(car);
+        }
+
+        public void removeCar(String licensePlate) {
+            cars.removeIf(car -> car.getLicensePlate().equals(licensePlate));
+        }
+
+        public void showFleet() {
+            for (Car car : cars) {
+                System.out.println(car);
+            }
+        }
+    }
+
+    public void main(String[] args) {
+        TaxiFleet fleet = new TaxiFleet();
+
+        // Добавляем автомобили
+        fleet.addCar(new Car("ABC123", "Toyota Camry", 2020));
+        fleet.addCar(new Car("XYZ789", "Honda Accord", 2019));
+
+        System.out.println("Таксопарк по состоянию на сегодня:");
+        fleet.showFleet();
+
+        // Удаляем автомобиль
+        fleet.removeCar("ABC123");
+
+        System.out.println("\nОбновленный таксопарк:");
+        fleet.showFleet();
     }
 }
