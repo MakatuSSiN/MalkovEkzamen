@@ -4,7 +4,7 @@ import java.util.List;
 
 //разработать класс для хранения данных об автомобилях, находящихся в таксопарке. Использую созданный класс, смоделировать работу приложения.
 public class Main {
-    public class Car {
+    public static class Car {
         private String licensePlate;
         private String model;
         private int year;
@@ -25,7 +25,7 @@ public class Main {
         }
     }
 
-    public class TaxiFleet {
+    public static class TaxiFleet {
         private List<Car> cars;
 
         public TaxiFleet() {
@@ -47,18 +47,19 @@ public class Main {
         }
     }
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         TaxiFleet fleet = new TaxiFleet();
 
         // Добавляем автомобили
-        fleet.addCar(new Car("ABC123", "Toyota Camry", 2020));
-        fleet.addCar(new Car("XYZ789", "Honda Accord", 2019));
+        fleet.addCar(new Car("AAA777", "Mercedes-Benz S-klasse S63 AMG", 2023));
+        fleet.addCar(new Car("ABC789", "BMW M5 F90 cs", 2018));
+        fleet.addCar(new Car("KKK888", "Mercedes-Benz C-klasse C43 AMG", 2017));
 
         System.out.println("Таксопарк по состоянию на сегодня:");
         fleet.showFleet();
 
         // Удаляем автомобиль
-        fleet.removeCar("ABC123");
+        fleet.removeCar("ABC789");
 
         System.out.println("\nОбновленный таксопарк:");
         fleet.showFleet();
