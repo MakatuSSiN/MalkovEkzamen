@@ -17,7 +17,7 @@ public class Main {
 
         @Override
         public String toString() {
-            return year + " " + model + " (License Plate: " + licensePlate + ")";
+            return year + " " + model + " (Номерной знак: " + licensePlate + ")";
         }
 
         public String getLicensePlate() {
